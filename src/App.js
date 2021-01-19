@@ -19,6 +19,10 @@ class App extends Component {
       .catch(error => console.log('Error in calling data'));
   }
 
+  handleChange = e => {
+    this.setState({ searchField: e.target.value })
+  }
+
   render() {
     // shorthand for (const monsters = this.state.monsters);
     const { monsters, searchField } = this.state;
@@ -29,7 +33,7 @@ class App extends Component {
       <div className='App'>
         <SearchBox
           placeholder='search monsters'
-          handleChange={e => this.setState({ searchField: e.target.value })}
+          handleChange={this.handleChange}
         />
         <CardList monsters={filteredMonsters} />
       </div>
